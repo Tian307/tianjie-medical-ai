@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>田洁 | Medical AI Builder</title>
+    <meta
+      name="description"
+      content="田洁的个人网站：医学背景、教学经验、医疗 AI 应用探索与 Vibe Coding 原型作品。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2303100f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='24' font-weight='700' fill='%2325e093'%3ETJ%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css?v=14" />
+  </head>
+  <body class="no-cartoon">
+    <canvas id="signalCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-light" id="cursorLight" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="top-mask" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="storyline" id="storyline" aria-hidden="true">
+      <div class="storyline-track">
+        <svg
+          class="storyline-path"
+          viewBox="0 0 28 1000"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            class="storyline-path-base"
+            pathLength="100"
+            d="M14 0 L14 135 C14 165 5 178 5 210 L5 355 C5 382 23 397 23 425 L23 575 C23 605 9 620 9 650 L9 792 C9 820 14 838 14 866 L14 1000"
+          />
+          <path
+            class="storyline-path-fill"
+            pathLength="100"
+            d="M14 0 L14 135 C14 165 5 178 5 210 L5 355 C5 382 23 397 23 425 L23 575 C23 605 9 620 9 650 L9 792 C9 820 14 838 14 866 L14 1000"
+          />
+        </svg>
+        <span class="storyline-fill" id="storylineFill"></span>
+        <span class="storyline-pulse" id="storylinePulse"></span>
+      </div>
+    </div>
+    <div class="boot-screen" id="bootScreen" aria-hidden="true">
+      <div class="boot-panel">
+        <span>INITIALIZING</span>
+        <strong>TIAN JIE / MEDICAL AI</strong>
+        <div class="boot-bar"><i></i></div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">TJ</span>
+        <span>田洁</span>
+      </a>
+      <nav aria-label="站点导航">
+        <a href="#data-lab">AI Lab</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#work">Projects</a>
+        <a href="#thinking">Thinking</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img class="hero-bg parallax-layer" data-depth="0.18" src="./assets/medical-training.jpg" alt="智慧健康学院医学教学场景" />
+        <div class="hero-noise" aria-hidden="true"></div>
+        <div class="hero-data-grid parallax-layer" data-depth="-0.22" aria-hidden="true"></div>
+        <div class="hero-scanner" id="heroScanner" aria-hidden="true"></div>
+        <div class="hero-zone-map" aria-hidden="true">
+          <span class="zone-item active" data-zone="0">Hospital</span>
+          <span class="zone-item" data-zone="1">School</span>
+          <span class="zone-item" data-zone="2">Data</span>
+          <span class="zone-item" data-zone="3">AI Lab</span>
+          <span class="zone-item" data-zone="4">Checkpoint</span>
+        </div>
+
+        <div class="hero-meta hero-meta-left reveal parallax-layer" data-depth="0.42">
+          <span>MEDICAL AI</span>
+          <strong>Clinical Workflow</strong>
+        </div>
+        <div class="hero-meta hero-meta-right reveal parallax-layer" data-depth="-0.36">
+          <span>VIBE CODING</span>
+          <strong>Prototype Builder</strong>
+        </div>
+
+        <div class="hero-insight reveal parallax-layer" data-depth="-0.18" aria-live="polite">
+          <span id="insightLabel">SIGNAL 01</span>
+          <strong id="insightTitle">Clinical Depth</strong>
+          <p id="insightText">从临床一线和真实医疗流程里理解 AI 该解决什么。</p>
+        </div>
+
+        <div class="hero-title reveal parallax-layer" data-depth="0.12">
+          <p class="kicker">Medical AI · Clinical Workflow · Vibe Coding</p>
+          <h1>
+            田洁
+            <span class="hero-en">Medical AI Builder</span>
+          </h1>
+          <p class="hero-lead">
+            从学校到医院，再把问题做成可验证的 AI 原型。
+          </p>
+          <div class="hero-cta">
+            <a class="primary-link" href="#depth">Enter Work</a>
+            <a class="ghost-link" href="#data-lab">Open AI Lab</a>
+          </div>
+        </div>
+
+        <div class="hero-footer reveal">
+          <div>
+            <span>5y</span>
+            <strong>Clinical</strong>
+          </div>
+          <div>
+            <span>3y</span>
+            <strong>Teaching</strong>
+          </div>
+          <div>
+            <span>AI</span>
+            <strong>Data & Prototype</strong>
+          </div>
+          <a class="hero-scroll" href="#depth">Scroll</a>
+        </div>
+      </section>
+
+      <section class="section depth-section" id="depth">
+        <div class="depth-copy reveal">
+          <p class="kicker">Clinical Depth</p>
+          <h2>从临床流程出发，连接模型能力与安全落地。</h2>
+        </div>
+        <div class="frontline-frame reveal" data-tilt>
+          <img src="./assets/clinical-frontline.jpg" alt="经过模糊处理的临床一线采样场景" loading="lazy" decoding="async" />
+          <div>
+            <span>COVID-era frontline · 临床一线采样工作</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section ai-console-section" id="data-lab">
+        <div class="section-heading reveal">
+          <p class="kicker">Ward Round AI</p>
+          <h2>查房语音，实时生成文本记录。</h2>
+          <p>语音转写后完成结构化整理，并由医护人员复核。</p>
+        </div>
+
+        <div class="ai-console reveal">
+          <div class="console-input">
+            <div class="console-head">
+              <span>01 / Live Transcript</span>
+              <strong>查房实时记录</strong>
+            </div>
+            <div class="sample-switch" aria-label="医学文本样例">
+              <button class="sample-btn active" type="button" data-medical-sample="record">记录</button>
+              <button class="sample-btn" type="button" data-medical-sample="medication">用药风险</button>
+              <button class="sample-btn" type="button" data-medical-sample="followup">随访记录</button>
+            </div>
+            <div class="voice-capture" id="voiceCapture">
+              <button class="voice-capture-btn" id="startRoundMic" type="button" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Zm7-4a7 7 0 0 1-14 0m7 7v3m-4 0h8" />
+                </svg>
+                <span id="roundMicLabel">开始查房转写</span>
+              </button>
+              <div class="voice-wave" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <span class="voice-status" id="roundMicStatus">待机 · 本页面不保存音频</span>
+            </div>
+            <textarea id="medicalInput" aria-label="查房语音转写文本">患者，女，67岁。诉头晕2小时，既往高血压病史10年，青霉素过敏。测血压168/96mmHg，心率88次/分，已协助卧床休息并继续观察。</textarea>
+            <div class="console-actions">
+              <span>模拟数据 · 结果需人工复核</span>
+              <button class="run-ai-btn" id="runMedicalAI" type="button">
+                <span class="run-icon" aria-hidden="true">▶</span>
+                整理记录
+              </button>
+            </div>
+          </div>
+
+          <div class="console-output" id="medicalOutput" aria-live="polite">
+            <div class="pipeline" id="medicalPipeline" aria-label="查房语音处理流程">
+              <div class="pipeline-step" data-medical-step="0"><span>01</span><strong>Speech-to-Text</strong></div>
+              <div class="pipeline-step" data-medical-step="1"><span>02</span><strong>Entity</strong></div>
+              <div class="pipeline-step" data-medical-step="2"><span>03</span><strong>Structure</strong></div>
+              <div class="pipeline-step" data-medical-step="3"><span>04</span><strong>Human Review</strong></div>
+            </div>
+
+            <div class="result-dashboard">
+              <div class="result-summary">
+                <span class="result-state" id="medicalState">READY</span>
+                <strong id="medicalSummary">等待整理查房记录</strong>
+                <p id="medicalHint">转写文本将被整理为可人工复核的记录草稿。</p>
+              </div>
+              <div class="metric-board">
+                <div><span>实体</span><strong id="entityCount">--</strong></div>
+                <div><span>完整度</span><strong id="qualityScore">--</strong></div>
+                <div><span>需复核</span><strong id="reviewCount">--</strong></div>
+              </div>
+            </div>
+
+            <div class="entity-board" id="entityBoard">
+              <span class="empty-result">Run analysis to inspect entities</span>
+            </div>
+
+            <div class="structured-panel">
+              <div class="structured-head">
+                <span>输出草稿</span>
+                <div class="output-target" aria-label="输出位置">
+                  <button class="output-target-btn active" type="button" data-output-target="护理记录单">护理记录单</button>
+                  <button class="output-target-btn" type="button" data-output-target="病历">病历</button>
+                </div>
+              </div>
+              <pre id="medicalJson">{
+  "status": "waiting",
+  "human_review": true
+}</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section evaluation-section" id="evaluation">
+        <div class="section-heading reveal">
+          <p class="kicker">Evaluation Platform</p>
+          <h2>通用评测报告生成平台</h2>
+          <p>
+            从标注数据、规则文档到 Bad Case 分析和五模块报告。
+          </p>
+        </div>
+
+        <div class="eval-console reveal" data-tilt>
+          <div class="eval-side">
+            <span class="project-number">02</span>
+            <h3>Evaluation Report Platform</h3>
+            <p>
+              上传标注主表或多张表，识别字段映射，生成结果分析表、Bad Case 表与评测报告。
+            </p>
+            <div class="eval-upload-stack" aria-hidden="true">
+              <span>标注主表.xlsx</span>
+              <span>规则文档.md</span>
+              <span>多 Sheet / 多文件</span>
+            </div>
+            <button class="run-ai-btn eval-run" id="runEvalReport" type="button">
+              <span class="run-icon" aria-hidden="true">▶</span>
+              生成评测报告
+            </button>
+          </div>
+
+          <div class="eval-main" aria-live="polite">
+            <div class="eval-flow" aria-label="评测报告生成流程">
+              <div class="eval-step active" data-eval-step="0"><span>01</span><strong>字段识别</strong></div>
+              <div class="eval-step" data-eval-step="1"><span>02</span><strong>规则对齐</strong></div>
+              <div class="eval-step" data-eval-step="2"><span>03</span><strong>Bad Case</strong></div>
+              <div class="eval-step" data-eval-step="3"><span>04</span><strong>报告生成</strong></div>
+            </div>
+
+            <div class="eval-metrics">
+              <div><span>样本量</span><strong id="evalRows">--</strong></div>
+              <div><span>通过率</span><strong id="evalPassRate">--</strong></div>
+              <div><span>Bad Case</span><strong id="evalBadCase">--</strong></div>
+              <div><span>报告模块</span><strong id="evalModules">--</strong></div>
+            </div>
+
+            <div class="eval-report-card">
+              <div>
+                <span class="result-state" id="evalState">READY</span>
+                <strong id="evalTitle">等待生成评测报告</strong>
+              </div>
+              <p id="evalSummary">
+                平台会先识别字段，再按规则统计错误类型，最后生成可下载的 PDF、Word、Markdown 和结果表。
+              </p>
+              <ul class="eval-report-list" id="evalReportList">
+                <li>字段映射：待识别</li>
+                <li>结果分析：待生成</li>
+                <li>报告正文：待生成</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section work-section" id="work">
+        <div class="section-heading reveal">
+          <p class="kicker">Featured Work</p>
+          <h2>实习到岗助手</h2>
+          <p>
+            排班识别、院区到岗确认与异常提醒原型。
+          </p>
+        </div>
+
+        <div class="demo-stage reveal" data-tilt>
+          <div class="demo-copy">
+            <span class="project-number">01</span>
+            <h3>Student Duty Status Assistant</h3>
+            <p class="scene-context">场景：医院实习期间，学生下夜班后可能正在休息，老师需要先判断状态。</p>
+            <div class="demo-status-stack" aria-hidden="true">
+              <span class="live-dot"></span>
+              <span>到岗确认</span>
+              <span>下夜班背景</span>
+              <span>异常提醒</span>
+            </div>
+            <ul>
+              <li>AI 排班识别</li>
+              <li>医院范围到岗</li>
+              <li>未到岗异常提醒</li>
+              <li>月度汇总</li>
+            </ul>
+            <a class="inline-demo-link" href="./demos/intern-duty-assistant/index.html?v=3">
+              Open interactive demo
+            </a>
+          </div>
+
+          <div class="phone-shell" aria-label="实习到岗助手可交互原型">
+            <iframe
+              title="实习到岗助手 Demo"
+              src="./demos/intern-duty-assistant/index.html?v=3"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="section lab-section" id="lab">
+        <div class="section-heading reveal">
+          <p class="kicker">AI Lab</p>
+          <h2>PDA 端护理口述记录结构化助手</h2>
+          <p>
+            口述转写、结构化抽取、安全校验与人工确认。
+          </p>
+        </div>
+
+        <div class="pda-workbench reveal">
+          <div class="pda-command">
+            <div class="console-head">
+              <span>Live Prototype</span>
+              <strong>护士口述 → 结构化记录</strong>
+            </div>
+            <div class="sample-switch" aria-label="PDA口述样例">
+              <button class="pda-sample active" type="button" data-pda-sample="routine">常规任务</button>
+              <button class="pda-sample" type="button" data-pda-sample="risk">冲突拦截</button>
+            </div>
+            <textarea id="pdaInput" aria-label="护士口述内容">2分钟后为1床测血糖，结果记录后提醒30分钟复测。</textarea>
+            <button class="run-ai-btn pda-run" id="runPdaAI" type="button">
+              <span class="run-icon" aria-hidden="true">▶</span>
+              解析口述
+            </button>
+            <p class="prototype-note">概念演示：模拟转写与结构化过程，不接入真实患者数据或医嘱系统。</p>
+          </div>
+
+          <div class="pda-process" id="pdaProcess" aria-live="polite">
+            <div class="pda-stages">
+              <div class="pda-stage" data-pda-step="0"><span>01</span><strong>语音转写</strong><small>ASR Transcript</small></div>
+              <div class="pda-stage" data-pda-step="1"><span>02</span><strong>实体抽取</strong><small>Clinical NER</small></div>
+              <div class="pda-stage" data-pda-step="2"><span>03</span><strong>冲突检查</strong><small>Safety Gate</small></div>
+              <div class="pda-stage" data-pda-step="3"><span>04</span><strong>人工确认</strong><small>Human Review</small></div>
+            </div>
+            <div class="pda-result" id="pdaResult">
+              <div class="pda-result-head">
+                <span class="result-state" id="pdaState">READY</span>
+                <strong id="pdaResultTitle">等待解析口述内容</strong>
+              </div>
+              <dl class="pda-fields">
+                <div><dt>床位</dt><dd id="pdaBed">--</dd></div>
+                <div><dt>任务</dt><dd id="pdaTask">--</dd></div>
+                <div><dt>时间</dt><dd id="pdaTime">--</dd></div>
+                <div><dt>提醒</dt><dd id="pdaReminder">--</dd></div>
+              </dl>
+              <div class="safety-message" id="pdaSafety">系统将在此显示冲突检查结果。</div>
+              <button class="confirm-ai-btn" id="confirmPda" type="button" disabled>人工确认并写入待办</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="technical-flow reveal">
+          <summary>
+            <span>Technical Flow</span>
+            查看隐私与安全流程
+          </summary>
+          <div class="technical-flow-body">
+            <img src="./assets/pda-flow-clean.png" alt="PDA语音结构化助手数据流向图" loading="lazy" decoding="async" />
+            <p>患者数据不出院内网络，模型输出必须经过质控与人工确认。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section thinking-section" id="thinking">
+        <div class="thinking-visual reveal">
+          <img src="./assets/clinical-board.jpg" alt="医学课堂黑板笔记" loading="lazy" decoding="async" />
+        </div>
+        <div class="thinking-copy reveal">
+          <p class="kicker">Thinking</p>
+          <h2>我关心 AI 能不能进入真实流程。</h2>
+          <div class="principles">
+            <div data-tilt>
+              <span>真实场景</span>
+              <p>从临床、教学和管理中的具体摩擦出发。</p>
+            </div>
+            <div data-tilt>
+              <span>人工确认</span>
+              <p>医疗 AI 应该辅助判断，而不是越过人做最终决定。</p>
+            </div>
+            <div data-tilt>
+              <span>安全边界</span>
+              <p>隐私、权限、留痕和异常拦截要先于炫技。</p>
+            </div>
+            <div data-tilt>
+              <span>快速验证</span>
+              <p>先用原型把想法跑通，再讨论复杂系统。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="contact-card reveal">
+          <p class="kicker">Contact</p>
+          <h2>一起聊医疗 AI、医学教育，或一个刚冒出来的原型想法。</h2>
+          <div class="contact-links">
+            <a href="mailto:1286833506@qq.com">1286833506@qq.com</a>
+            <span class="contact-phone" aria-label="手机号：178开头，2109结尾">178****2109</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js?v=14"></script>
+  </body>
+</html>
